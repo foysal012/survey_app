@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:survey_app/provider/question_provider.dart';
+import 'package:survey_app/view/screen/splash_screen.dart';
+import 'package:survey_app/viewmodel/question_controller.dart';
 import 'view/screen/home_page.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => QuestionProvider(),)
+        ChangeNotifierProvider(create: (context) => QuestionController(),)
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -23,7 +25,8 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         ),
         debugShowCheckedModeBanner: false,
-        home: HomePage(),
+        // home: HomePage(),
+        home: SplashScreen(),
       ),
     );
   }
