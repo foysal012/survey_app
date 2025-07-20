@@ -1,9 +1,8 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:survey_app/repository/question_repository.dart';
 import '../model/question_response.dart';
 
-class QuestionProvider with ChangeNotifier {
+class QuestionController with ChangeNotifier {
   bool _isScreenLoading = false;
   bool get isScreenLoading => _isScreenLoading;
 

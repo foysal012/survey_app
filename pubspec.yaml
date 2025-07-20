@@ -37,6 +37,7 @@ dependencies:
   http: ^1.4.0
   gap: ^3.0.1
   provider: ^6.1.5
+  package_info_plus: ^8.3.0
 
 dev_dependencies:
   flutter_test:

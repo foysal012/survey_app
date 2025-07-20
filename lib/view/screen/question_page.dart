@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:survey_app/provider/question_provider.dart';
+import 'package:survey_app/viewmodel/question_controller.dart';
 import '../../resources/app_color.dart';
 import '../../resources/app_style.dart';
 
@@ -18,7 +18,7 @@ class _QuestionPageState extends State<QuestionPage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<QuestionProvider>(context, listen: false).initialMethod();
+      Provider.of<QuestionController>(context, listen: false).initialMethod();
     });
   }
 
@@ -39,7 +39,7 @@ class _QuestionPageState extends State<QuestionPage> {
         backgroundColor: AppColor.primaryColor,
       ),
 
-      body: Consumer<QuestionProvider>(
+      body: Consumer<QuestionController>(
         builder: (context, questionProvider, child) {
           return questionProvider.isScreenLoading?
           Center(child: CupertinoActivityIndicator(color: AppColor.primaryColor, radius: 15.0)) :
