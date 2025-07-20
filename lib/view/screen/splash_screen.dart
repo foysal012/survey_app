@@ -5,6 +5,8 @@ import 'package:survey_app/resources/app_color.dart';
 import 'package:survey_app/resources/app_style.dart';
 import 'package:survey_app/view/screen/home_page.dart';
 
+import 'introduction_screen/introduction_screen.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -35,7 +37,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> getNavigation() async {
    await Future.delayed(Duration(seconds: 3));
-   Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => HomePage()), (route) => false);
+   // Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => HomePage()), (route) => false);
+   Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => IntroductionScreen()), (route) => false);
   }
 
   @override
