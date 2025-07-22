@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:survey_app/resources/app_color.dart';
+import 'package:survey_app/resources/app_style.dart';
 import 'package:survey_app/viewmodel/introduction_controller.dart';
 
 import '../../../resources/app_images.dart';
@@ -146,8 +148,8 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                       IconButton(
                           onPressed: (){
                             if(value.currentIndex>0){
-                              // value.setCurrentIndex(value.currentIndex--);
-                            // _pageController.jumpToPage(value.currentIndex --);
+                              value.setCurrentIndex(value.currentIndex-1);
+                            _pageController.jumpToPage(value.currentIndex-1);
                             }
                           },
                           icon: Icon(Icons.arrow_back, color: Colors.white, size: 30)
@@ -180,12 +182,36 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                       ),
 
                       IconButton(
-                          onPressed: (){},
+                          onPressed: (){
+                            value.setCurrentIndex(value.currentIndex+1);
+                            _pageController.jumpToPage(value.currentIndex+1);
+                          },
                           icon: Icon(Icons.arrow_forward, color: Colors.white, size: 30)
                       )
                     ],
                   )
-              )
+              ),
+              
+              Positioned(
+                  top: 30,
+                  right: 20,
+                  child: GestureDetector(
+                    onTap: (){
+                      _pageController.jumpToPage(5);
+                    },
+                child: Container(
+                  padding: EdgeInsets.all(10.0),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.amber
+                  ),
+                  child: Text('Skip',
+                  style: AppStyle.boldTextStyle(
+                    color: AppColor.appWhite
+                  ),
+                  ),
+                ),
+              ))
             ],
           );
         },)
