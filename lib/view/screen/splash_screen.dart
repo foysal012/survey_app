@@ -37,8 +37,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> getNavigation() async {
    await Future.delayed(Duration(seconds: 3));
-   // Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => HomePage()), (route) => false);
-   Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => IntroductionScreen()), (route) => false);
+   Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => HomePage()), (route) => false);
+   // Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => IntroductionScreen()), (route) => false);
   }
 
   @override
