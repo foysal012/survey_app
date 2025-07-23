@@ -4,6 +4,7 @@ import 'package:survey_app/resources/app_color.dart';
 import 'package:survey_app/resources/app_style.dart';
 import 'package:survey_app/services/ad_helper.dart';
 import 'package:survey_app/view/screen/question_page.dart';
+import 'interstitial_ad_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,29 +15,29 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  // BannerAd? _bannerAd;
-  //
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   BannerAd(
-  //     adUnitId: AdHelper.bannerAdUnitId,
-  //     request: AdRequest(),
-  //     size: AdSize.banner,
-  //     listener: BannerAdListener(
-  //       onAdLoaded: (ad) {
-  //         setState(() {
-  //           _bannerAd = ad as BannerAd;
-  //         });
-  //       },
-  //       onAdFailedToLoad: (ad, error) {
-  //         debugPrint('Failed to load a banner ad: ${error.message}');
-  //         ad.dispose();
-  //       },
-  //     )
-  //   ).load();
-  // }
+  BannerAd? _bannerAd;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    BannerAd(
+      adUnitId: AdHelper.bannerAdUnitId,
+      request: AdRequest(),
+      size: AdSize.banner,
+      listener: BannerAdListener(
+        onAdLoaded: (ad) {
+          setState(() {
+            _bannerAd = ad as BannerAd;
+          });
+        },
+        onAdFailedToLoad: (ad, error) {
+          debugPrint('Failed to load a banner ad: ${error.message}');
+          ad.dispose();
+        },
+      )
+    ).load();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,17 +73,22 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            // if(_bannerAd != null)
-            // Align(
-            //   alignment: Alignment.topCenter,
-            //   child: Container(
-            //     height: _bannerAd?.size.height.toDouble(),
-            //     width: _bannerAd?.size.width.toDouble(),
-            //     child: AdWidget(ad: _bannerAd!),
-            //   ),
-            // )
+            if(_bannerAd != null)
+            Align(
+              alignment: Alignment.topCenter,
+              child: Container(
+                height: _bannerAd?.size.height.toDouble(),
+                width: _bannerAd?.size.width.toDouble(),
+                child: AdWidget(ad: _bannerAd!),
+              ),
+            )
           ],
         ),
+      ),
+
+      floatingActionButton: FloatingActionButton(
+          onPressed: ()=> Navigator.of(context).push(MaterialPageRoute(builder: (context) => InterstitialAdScreen())),
+          child: Icon(Icons.near_me),
       ),
     );
   }
