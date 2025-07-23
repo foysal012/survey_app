@@ -8,7 +8,7 @@ import 'package:survey_app/viewmodel/question_controller.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  // MobileAds.instance.initialize();
+  MobileAds.instance.initialize();
   runApp(const MyApp());
 }
 
@@ -20,8 +20,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => QuestionController(),),
-        ChangeNotifierProvider(create: (context) => IntroductionController(),)
+        ChangeNotifierProvider(create: (context) => QuestionController()),
+        ChangeNotifierProvider(create: (context) => IntroductionController())
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
