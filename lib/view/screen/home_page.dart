@@ -4,6 +4,7 @@ import 'package:survey_app/resources/app_color.dart';
 import 'package:survey_app/resources/app_style.dart';
 import 'package:survey_app/services/ad_helper.dart';
 import 'package:survey_app/view/screen/question_page.dart';
+import 'package:survey_app/view/screen/reward_ad_screen.dart';
 import 'interstitial_ad_screen.dart';
 
 class HomePage extends StatefulWidget {
@@ -54,23 +55,48 @@ class _HomePageState extends State<HomePage> {
         child: Stack(
           children: [
             Center(
-              child: GestureDetector(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => QuestionPage())),
-                child: Container(
-                  height: 30,
-                  width: 60,
-                  padding: AppStyle.padding(2.5),
-                  decoration: BoxDecoration(
-                    color: AppColor.primaryColor,
-                    borderRadius: AppStyle.radius(10.0)
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  GestureDetector(
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => QuestionPage())),
+                    child: Container(
+                      height: 30,
+                      width: 60,
+                      padding: AppStyle.padding(2.5),
+                      decoration: BoxDecoration(
+                        color: AppColor.primaryColor,
+                        borderRadius: AppStyle.radius(10.0)
+                      ),
+                      child: Text('Start', style: AppStyle.boldTextStyle(
+                          fontSize: AppStyle.fontSize14,
+                          color: AppColor.appWhite
+                      ),
+                        textAlign: TextAlign.center
+                      ),
+                    ),
                   ),
-                  child: Text('Start', style: AppStyle.boldTextStyle(
-                      fontSize: AppStyle.fontSize14,
-                      color: AppColor.appWhite
+                  AppStyle.gap(10.0),
+
+                  GestureDetector(
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => RewardAdScreen())),
+                    child: Container(
+                      height: 30,
+                      width: 60,
+                      padding: AppStyle.padding(2.5),
+                      decoration: BoxDecoration(
+                        color: AppColor.primaryColor,
+                        borderRadius: AppStyle.radius(10.0)
+                      ),
+                      child: Text('Reward Add', style: AppStyle.boldTextStyle(
+                          fontSize: AppStyle.fontSize14,
+                          color: AppColor.appWhite
+                      ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
                   ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
+                ],
               ),
             ),
             if(_bannerAd != null)
